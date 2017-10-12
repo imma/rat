@@ -6,7 +6,8 @@ function main {
   source normalize  
 
   local nm_mode="$1"; shift
-  exec rat --mode "$nm_mode" --cmd "$*"
+  trap "reset" EXIT
+  rat --mode "$nm_mode" --cmd "$*"
 }
 
 source sub "$BASH_SOURCE" "$@"
